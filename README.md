@@ -24,5 +24,6 @@ I've created one @Test method for each api endpoint.
 The test method will call the api using the object from reponse body to validate the information returned.
 
 ## **Steps to run**
+There is an api.properties in the resources folder, this is the only point of configuration. I've placed my api-key there, so probably you do not need to change anything there.
 
 As well as UI test, I did not create a maven profile, you will be able to run the test just using a **mvn clean install** command.
