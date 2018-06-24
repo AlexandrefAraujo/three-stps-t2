@@ -1,5 +1,6 @@
 package test.three.stripes.openweathermap.service;
 
+import test.three.stripes.openweathermap.data.City;
 import test.three.stripes.openweathermap.data.GeographicCoordinates;
 import test.three.stripes.openweathermap.model.CurrentWeatherResponse;
 
@@ -24,21 +25,9 @@ public class OpenWeatherMapService extends OpenWeatherMapSpecification{
     }
 
 
-    public static void main(String[] args) {
-        OpenWeatherMapService openWeatherMapService = new OpenWeatherMapService();
-        openWeatherMapService.getWeatherByCityName("Rio de Janeiro");
-        openWeatherMapService.getWeatherByCityId(2172797);
-        openWeatherMapService.getWeatherByGeographicCoordinates(new GeographicCoordinates(35, 139));
-        openWeatherMapService.getWeatherByZipCode(94040, "us");
-        openWeatherMapService.getWeatherFromCitiesInARectangleZone(new GeographicCoordinates(12,32,15,37,10));
-        openWeatherMapService.getWeatherFromCitiesInACycleZone(new GeographicCoordinates(55.5,37.5),10);
-        openWeatherMapService.getWeatherFromCitiesByIds("524901,703448,2643743");
-    }
-
-
-    public CurrentWeatherResponse getWeatherByCityName(String city) {
+    public CurrentWeatherResponse getWeatherByCityName(City city) {
         Map<String, String> params = new HashMap<>();
-        params.put("q", city);
+        params.put("q", city.getName());
         return getCurrentWeather(params);
     }
 

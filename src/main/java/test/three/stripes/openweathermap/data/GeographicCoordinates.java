@@ -7,7 +7,7 @@ public class GeographicCoordinates {
     private String lonRight;
     private String latTop;
     private String zoom;
-//lonleft lat top
+
     public GeographicCoordinates(double lonLeft, double latBottom, double lonRight, double latTop, int zoom) {
         this.lonLeft = String.valueOf(lonLeft);
         this.latBottom = String.valueOf(latBottom);
