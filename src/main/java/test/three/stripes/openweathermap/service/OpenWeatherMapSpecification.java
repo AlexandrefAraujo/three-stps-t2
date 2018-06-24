@@ -4,18 +4,24 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 
-class OpenWeatherMapSpecification {
+class OpenWeatherMapSpecification{
+
+    private static APIProperties properties;
+
 
     RequestSpecification requestSpecification() {
+
+        if(properties == null) properties = new APIProperties().loadContext();
+
         return new RequestSpecBuilder()
                 .setUrlEncodingEnabled(true)
                 .setContentType(ContentType.JSON)
-                .setBaseUri("http://api.openweathermap.org")
-                .setBasePath("/data/2.5/")
+                .setBaseUri(properties.baseUri)
+                .setBasePath(properties.basePath)
 //                .addFilter(new ResponseLoggingFilter())
 //                .addFilter(new RequestLoggingFilter())
                 .build()
-                .queryParam("APPID", "e478b35334d99bcf5f47b8ea39d02958");
+                .queryParam("APPID", properties.apiKey);
     }
 
 
